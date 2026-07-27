@@ -1,0 +1,71 @@
+name: ndi-runtime
+base: core24
+version: 6.3.0
+title: NDI SDK Runtime
+summary: Proprietary NDI SDK shared runtime library
+license: Proprietary
+description: |
+  Provides the proprietary NDI SDK runtime library (libndi.so) for
+  OBS Studio plugin snaps like DistroAV.
+
+  NDI® is a registered trademark of Vizrt NDI AB.
+  See https://ndi.video for licensing details.
+
+  This is not legal advice.
+grade: devel
+confinement: strict
+
+platforms:
+  amd64:
+
+slots:
+  obs-plugins:
+    interface: content
+    source:
+      read:
+        - /ndi-runtime
+
+parts:
+  prepare-hook:
+    plugin: nil
+    override-build: |
+      mkdir -p ${CRAFT_PART_INSTALL}/snap/hooks/
+      echo -e '#!/bin/bash\nsnapctl set :obs-plugins snapname="ndi-runtime"' > ${CRAFT_PART_INSTALL}/snap/hooks/prepare-slot-obs-plugins
+      chmod +x ${CRAFT_PART_INSTALL}/snap/hooks/prepare-slot-obs-plugins
+
+  ndi-sdk:
+    after:
+      - prepare-hook
+    plugin: nil
+    build-packages:
+      - curl
+      - libarchive-tools
+    stage-packages:
+      - libavahi-client3
+      - libavahi-common3
+    override-pull: |
+      curl -L -o ${CRAFT_PART_SRC}/Install_NDI_SDK_v6_Linux.tar.gz \
+        https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v6_Linux.tar.gz
+      echo "f0314f245446defc488b63ceb4689acf1a965aeefdadacb70571bb216a8cc183  ${CRAFT_PART_SRC}/Install_NDI_SDK_v6_Linux.tar.gz" | sha256sum -c
+    override-build: |
+      set -eux
+      cd ${CRAFT_PART_SRC}
+      tar -xzf Install_NDI_SDK_v6_Linux.tar.gz
+      _target_line="$(sed -n '/^__NDI_ARCHIVE_BEGIN__$/=' Install_NDI_SDK_v6_Linux.sh)"
+      _target_line="$((_target_line + 1))"
+      tail -n +"$_target_line" Install_NDI_SDK_v6_Linux.sh | tar -zxf - \
+        "NDI SDK for Linux/lib/x86_64-linux-gnu/" \
+        "NDI SDK for Linux/NDI SDK License Agreement.txt" \
+        "NDI SDK for Linux/licenses/libndi_licenses.txt"
+      mkdir -p ${CRAFT_PART_INSTALL}/ndi-runtime/lib
+      cp -a "NDI SDK for Linux/lib/x86_64-linux-gnu/libndi.so.6".*.* \
+        ${CRAFT_PART_INSTALL}/ndi-runtime/lib/
+      cd ${CRAFT_PART_INSTALL}/ndi-runtime/lib/
+      ln -s libndi.so.6.*.* libndi.so.6
+      install -D -m644 "${CRAFT_PART_SRC}/NDI SDK for Linux/NDI SDK License Agreement.txt" \
+        -t ${CRAFT_PART_INSTALL}/ndi-runtime/licenses/
+      install -D -m644 "${CRAFT_PART_SRC}/NDI SDK for Linux/licenses/libndi_licenses.txt" \
+        -t ${CRAFT_PART_INSTALL}/ndi-runtime/licenses/
+    organize:
+      usr/lib/x86_64-linux-gnu/libavahi-client.so*: ndi-runtime/lib/
+      usr/lib/x86_64-linux-gnu/libavahi-common.so*: ndi-runtime/lib/
