@@ -1,4 +1,4 @@
-name: ndi-runtime
+name: ndi-runtime-obs-studio
 base: core24
 version: 6.3.0
 title: NDI SDK Runtime
