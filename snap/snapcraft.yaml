@@ -10,8 +10,6 @@ description: |
 
   NDI® is a registered trademark of Vizrt NDI AB.
   See https://ndi.video for licensing details.
-
-  This is not legal advice.
 grade: devel
 confinement: strict
 
