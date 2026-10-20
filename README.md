@@ -58,3 +58,12 @@ Agreement, included in the snap at `/ndi-runtime/licenses/`.
 
 NDI® is a registered trademark of Vizrt NDI AB. For more information about NDI,
 visit [ndi.video](https://ndi.video/).
+
+## Building locally
+
+```shell
+snapcraft
+```
+
+The snap starts in `devel` grade; flip it to `stable` in
+`snap/snapcraft.yaml` once the packaged runtime is verified to work.
