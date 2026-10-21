@@ -10,6 +10,20 @@ description: |
 
   NDI® is a registered trademark of Vizrt NDI AB.
   See https://ndi.video for licensing details.
+
+  **Installation**
+
+  Install the snap:
+
+      sudo snap install ndi-runtime-obs-studio
+
+  Then connect it to the OBS Studio snap:
+
+      sudo snap connect obs-studio:obs-plugins ndi-runtime-obs-studio:obs-plugins
+
+  Once connected, the plugin will be available in OBS Studio after restarting
+  it.
+
 website: https://ndi.video
 source-code: https://github.com/obs-plugins-snaps/ndi-runtime-obs-studio-snap
 contact: https://github.com/obs-plugins-snaps/ndi-runtime-obs-studio-snap
