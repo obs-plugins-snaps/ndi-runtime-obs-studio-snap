@@ -13,13 +13,13 @@ content interface.
 ### Install from the Store
 
 ```shell
-sudo snap install ndi-runtime
+sudo snap install ndi-runtime-obs-studio
 ```
 
 ### Connect to the OBS Studio snap
 
 ```shell
-sudo snap connect obs-studio:obs-plugins ndi-runtime:obs-plugins
+sudo snap connect obs-studio:obs-plugins ndi-runtime-obs-studio:obs-plugins
 ```
 
 ### Pair with DistroAV
@@ -33,7 +33,7 @@ sudo snap connect obs-studio:obs-plugins distroav-obs-studio:obs-plugins
 
 ```
 obs-studio
-  └── obs-plugins:ndi-runtime  →  /ndi-runtime/lib/libndi.so.6
+  └── obs-plugins:ndi-runtime-obs-studio  →  /ndi-runtime-obs-studio/lib/libndi.so.6
 ```
 
 The OBS Studio snap's plugin hook automatically adds all mounted plugin `/lib`
