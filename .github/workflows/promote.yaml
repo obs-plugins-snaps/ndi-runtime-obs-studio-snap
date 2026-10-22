@@ -18,7 +18,7 @@ on:
 
 jobs:
   promote:
-    uses: obs-plugins-snaps/workflows/.github/workflows/promote-dispatch.yml@main
+    uses: obs-plugins-snaps/workflows/.github/workflows/promote.yml@main
     with:
       plugin_name: "ndi-runtime"
       revision: "${{ github.event.inputs.revision }}"
