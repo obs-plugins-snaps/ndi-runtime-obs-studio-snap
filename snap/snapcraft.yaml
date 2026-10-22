@@ -5,15 +5,10 @@ title: NDI SDK Runtime
 summary: "Proprietary NDI SDK shared runtime library"
 license: Proprietary
 description: |
-<<<<<<< before updating
-  Provides the proprietary NDI SDK runtime library (libndi.so) for
-  OBS Studio plugin snaps like DistroAV.
+  Provides the proprietary NDI SDK runtime library (libndi.so) for OBS Studio plugin snaps like DistroAV.
 
   NDI® is a registered trademark of Vizrt NDI AB.
   See https://ndi.video for licensing details.
-=======
-  Provides the proprietary NDI SDK runtime library (libndi.so) for OBS Studio plugin snaps like DistroAV.
->>>>>>> after updating
 
   **Installation**
 
@@ -30,21 +25,13 @@ description: |
 
 website: https://ndi.video
 source-code: https://github.com/obs-plugins-snaps/ndi-runtime-obs-studio-snap
-<<<<<<< before updating
-contact: https://github.com/obs-plugins-snaps/ndi-runtime-obs-studio-snap
-issues: https://github.com/obs-plugins-snaps/ndi-runtime-obs-studio-snap
-
-grade: stable
-=======
 contact: https://github.com/obs-plugins-snaps/ndi-runtime-obs-studio-snap/issues
 issues: https://github.com/obs-plugins-snaps/ndi-runtime-obs-studio-snap/issues
-license: Proprietary
 
 
 icon: snap/gui/icon.png
 
-grade: devel
->>>>>>> after updating
+grade: stable
 confinement: strict
 
 platforms:

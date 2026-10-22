@@ -1,15 +1,10 @@
 # NDI Runtime Snap for OBS Studio
 
-<<<<<<< before updating
+[![ndi-runtime-obs-studio](https://snapcraft.io/ndi-runtime-obs-studio/badge.svg)](https://snapcraft.io/ndi-runtime-obs-studio)
+
 This snap provides the proprietary [NDI® SDK](https://ndi.video) runtime library
 (`libndi.so`) for OBS Studio plugin snaps that depend on it, such as
 [DistroAV](https://github.com/DistroAV/DistroAV).
-=======
-[![ndi-runtime-obs-studio](https://snapcraft.io/ndi-runtime-obs-studio/badge.svg)](https://snapcraft.io/ndi-runtime-obs-studio)
-
-This snap delivers [ndi-runtime](https://ndi.video) to the
-[OBS Studio snap](https://snapcraft.io/obs-studio).
->>>>>>> after updating
 
 It is a companion to the **distroav-obs-studio** snap. Both snaps connect to
 the [OBS Studio snap](https://snapcraft.io/obs-studio) via the `obs-plugins`
