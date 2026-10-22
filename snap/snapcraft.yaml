@@ -29,7 +29,7 @@ source-code: https://github.com/obs-plugins-snaps/ndi-runtime-obs-studio-snap
 contact: https://github.com/obs-plugins-snaps/ndi-runtime-obs-studio-snap
 issues: https://github.com/obs-plugins-snaps/ndi-runtime-obs-studio-snap
 
-grade: devel
+grade: stable
 confinement: strict
 
 platforms:
