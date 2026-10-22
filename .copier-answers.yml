@@ -1,9 +1,10 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v0.0.6
+_commit: v0.0.13
 _src_path: https://github.com/obs-plugins-snaps/template.git
 description: Provides the proprietary NDI SDK runtime library (libndi.so) for OBS
     Studio plugin snaps like DistroAV.
 license: Proprietary
 plugin_name: ndi-runtime
+source_tag: 0.1.0
 source_url: https://ndi.video
 summary: Proprietary NDI SDK shared runtime library
