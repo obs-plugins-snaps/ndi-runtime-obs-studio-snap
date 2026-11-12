@@ -68,4 +68,29 @@ snapcraft
 ```
 
 The snap starts in `devel` grade; flip it to `stable` in
+<<<<<<< before updating
 `snap/snapcraft.yaml` once the packaged runtime is verified to work.
+=======
+`snap/snapcraft.yaml` once the packaged plugin is verified to work.
+
+## E2E tests
+
+The repository ships a small pytest suite (`tests/e2e`) that starts a
+headless Wayland session, drives OBS through the accessibility tree, and
+checks that the plugin's module is actually loaded. CI runs it on every
+pull request against the exact snap built in that run (non-blocking
+while the suite soaks). Plugins extend the suite with tests for their
+own UI surface.
+
+To run it locally, install the snap and connect it as above, then run
+the suite from the shared workflows checkout:
+
+```shell
+E2E_OBS_HOME="$PWD/e2e-home" \
+  uv run --project /path/to/obs-plugins-snaps/workflows \
+  pytest tests/e2e
+```
+
+Screenshots, logs and state are collected under `$E2E_OBS_HOME`
+(`e2e-home/` above) for triage.
+>>>>>>> after updating
